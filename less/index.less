@@ -1,5 +1,5 @@
 // Is this working?
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -13,24 +13,25 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
+	font-size: 62.5%;
 	font: inherit;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
-	line-height: 1;
+	line-height: 1.5;
 }
 ol, ul {
 	list-style: none;
@@ -53,7 +54,195 @@ table {
     box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
+/* Mixins */
+
+.Font-changer {
+	font-size: 1rem;
 }
 
+html, body {
+		width: 1000px;
+    height: 100%;
+		margin-right: auto;
+		margin-left: auto;
+		font-family: sans-serif;
+
+		@media (max-width: 500px) {
+			width: 450px;
+			margin-right: 10px;
+			margin-left: 10px;
+		}
+}
+
+/* Variables */
+
+@box-bg: darkgray;
+@copyright-bg: gray;
+@h1-text: 2.4rem;
+@h3-text: 1.8rem;
+@bold: bold;
+@inverse-text: white;
+@box-border1: 2px solid blue;
+@box-border2: 2px solid red;
+@box-border3: 2px solid green;
+@pad-top: 20px;
+@pad-bottom: 20px;
+
+header {
+	padding-top: @pad-top;
+	padding-bottom: @pad-bottom;
+	display: flex;
+	justify-content: flex-end;
+
+		@media (max-width: 500px) {
+			justify-content: center;
+		}
+
+		a {
+			margin-left: 20px;
+			text-decoration: none;
+			color: black;
+			font-weight: @bold;
+		}
+}
+
+.intro-box {
+	background-color: @box-bg;
+	color: white;
+	padding: 40px;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	img {
+		height: 480px;
+		width: 320px;
+	}
+
+	h1 {
+		padding-top: @pad-top;
+		padding-bottom: @pad-bottom;
+		font-size: @h1-text;
+		font-weight: @bold;
+		width: 100%;
+		border-bottom: 2px dashed white;
+	}
+
+	p {
+		padding-top: @pad-top;
+		padding-bottom: @pad-bottom;
+	}
+
+	button {
+		background-color: @copyright-bg;
+		color: @inverse-text;
+		width: 120px;
+		border: none;
+		border-radius: 6px;
+  	padding: 4px 8px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+		font-size: 1.2rem;
+	}
+
+	button:hover {
+		background-color: black;
+		color: @box-bg;
+	}
+}
+
+.work {
+	padding-top: @pad-top;
+	padding-bottom: @pad-bottom;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+
+		@media (max-width: 500px) {
+			flex-direction: column;
+			justify-content: space-around;
+		}
+			.info-box {
+				width: 460px;
+			h1 {
+				padding-top: @pad-top;
+				padding-bottom: @pad-bottom;
+				font-size: @h1-text;
+				font-weight: @bold;
+			}
+
+			p {
+				font-size: 1.8rem;
+				font-weight: @bold;
+				@media (max-width: 500px) {
+					.Font-changer();
+				}
+			}
+		}
+	}
+
+	.info-box2 {
+		h1 {
+			padding-top: @pad-top;
+			padding-bottom: @pad-bottom;
+			font-size: @h1-text;
+			font-weight: @bold;
+		}
+
+		ul {
+			font-weight: @bold;
+			li {
+				padding: 10px;
+				border-bottom: 1px solid black
+			}
+		}
+	}
+
+.info-box3 {
+	background-color: @box-bg;
+	color: white;
+	padding-top: @pad-top;
+	padding-bottom: @pad-bottom;
+	h1 {
+		padding-top: @pad-top;
+		padding-bottom: @pad-bottom;
+		font-size: @h1-text;
+		font-weight: @bold;
+		text-align: center;
+	}
+
+	table {
+		text-align: center;
+		width: 100%;
+			th {
+				padding-top: 7.5px;
+				padding-bottom: 7.5px;
+			}
+
+			td {
+				padding-top: 7.5px;
+				padding-bottom: 7.5px;
+			}
+			.head {
+				font-weight: @bold;
+			}
+
+			.data {
+				background-color: white;
+				color: black;
+			}
+
+			.data2 {
+		}
+	}
+}
+
+.copyright {
+	background-color: @copyright-bg;
+	text-align: center;
+	padding-top: @pad-top;
+	padding-bottom: @pad-bottom;
+	font-size: 0.9rem;
+	color: @inverse-text;
+}
